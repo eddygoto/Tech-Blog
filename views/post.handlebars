@@ -1,0 +1,33 @@
+<div class="post-container">
+  <section class="post">
+    <div class="post-header">
+      <h2>
+        <p>{{title}}</p>
+      </h2>
+      <p>Created by {{user.name}}</p>
+    </div>
+    <div class="post-content">
+      <p>{{content}}</p>
+    </div>
+    <div class="post-footer">
+      {{#if logged_in}}
+      <p><a href="/api/posts/comment/{{id}}">Leave a comment</a></p>
+      {{else}}
+      <p><a href="/login">Login</a> to leave a comment</p>
+      {{/if}}
+    </div>
+  </section>
+
+  {{#each comments as |comment| }}
+  <section class="comment">
+    <div class="comment-header">
+      <h2>
+        <p>{{comment.user.name}}</p>
+      </h2>
+    </div>
+    <div class="comment-content">
+      <p>{{comment.content}}</p>
+    </div>
+  </section>
+  {{/each}}
+</div>
